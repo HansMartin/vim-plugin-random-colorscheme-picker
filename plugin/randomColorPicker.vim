@@ -37,10 +37,10 @@ if g:os == 'linux'
     let g:love_path=g:plugin_path.'/.love'
     let g:hate_path=g:plugin_path.'/.hate'
 elseif g:os == 'win'
-    let g:plugin_path=$HOME.'/vimfiles/plugin'
+    let g:plugin_path=fnamemodify(resolve(expand('<sfile>:p')), ':h')
     let g:slash='\'
-    let g:love_path=g:plugin_path.'\love.txt'
-    let g:hate_path=g:plugin_path.'\hate.txt'
+    let g:love_path=g:plugin_path.'\\love.txt'
+    let g:hate_path=g:plugin_path.'\\hate.txt'
 endif
 
 
@@ -52,7 +52,7 @@ let g:colorscheme_file=''
 let g:total_colorschemes = 0
 
 function! Picker()
-    " Fetch the runtime path and search for 
+    " Fetch the runtime path and search for
     " all the color files
     let colorscheme_dirs = []
     for i in split(&runtimepath, ',')
